@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: "Courier New", monospace;
+        line-height: 1.6;
+        box-sizing: border-box;
+        min-height: 300px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("./old-husks.png");
+      }
+
+      #consoleOutput {
+        white-space: pre-wrap;
+      }
+
+      #consoleOutput p {
+        border-bottom: 1px solid white;
+        margin: 0px;
+        padding: 7px 5px;
+      }
+
+      #consoleOutput p::before {
+        content: "> ";
+      }
+
+      #consoleOutput .error{
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="consoleOutput"></div>
+    <script>
+      const originalConsoleLog = console.log;
+
+      // Replace console.log with a custom function
+      console.log = (...args) => {
+        originalConsoleLog(...args);
+        // Update the display in the <div> with id "consoleOutput"
+        const outputDiv = document.getElementById("consoleOutput");
+        const newLogEntry = document.createElement("p");
+        newLogEntry.innerText = JSON.stringify(args);
+        outputDiv.appendChild( newLogEntry);
+      };
+      console.error = (...args) => {
+        originalConsoleLog(...args)
+        const outputDiv = document.getElementById("consoleOutput");
+        const newLogEntry = document.createElement("p");
+        newLogEntry.className = "error";
+        newLogEntry.innerText = args.join(" ");
+        outputDiv.appendChild(newLogEntry);
+      };
+
+      // Run the provided code using eval
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const data = urlParams.get("code");
+        console.log(data)
+        eval(data);
+      } catch (error) {
+        console.error("Error occurred:", error);
+      }
+    </script>
+  </body>
+</html>

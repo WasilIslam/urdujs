@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Custom Language IntelliSense and Highlighter</title>
+    <style>
+      /* Set the width and height of the editor to fill the entire viewport */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* Set the width of the editor to 100% and height to fill the remaining space */
+      #editor {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="editor"></div>
+    <!-- Add the button to the HTML -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.0/min/vs/loader.js"></script>
+    <script>
+      const translations = {
+        jama: "+",
+        tafreeq: "-",
+        taqseem: "/",
+        zarb: "*",
+        barabar: "=",
+        jabtak: "while",
+        rakho: "let",
+        agar: "if",
+        kaarkhana: "function",
+        sabar: "await",
+        wapis: "return",
+        bolo: "console.log",
+        baad: "then",
+        pakro: "catch",
+        barabarha: "==",
+        chota: "<",
+        se: "",
+        ke: "",
+        ha: "",
+        ko: "",
+        karo: "",
+        bhejo: "",
+        waqfa: "setInterval",
+      };
+
+      function createSuggestions(translations) {
+        return Object.keys(translations).map((key) => ({
+          label: key,
+          kind: monaco.languages.CompletionItemKind.Keyword,
+          insertText: key,
+          documentation: translations[key],
+        }));
+      }
+
+      require.config({
+        paths: {
+          vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.0/min/vs",
+        },
+      });
+      require(["vs/editor/editor.main"], function () {
+        monaco.languages.register({ id: "customAndJSLanguage" });
+        monaco.languages.setMonarchTokensProvider("customAndJSLanguage", {
+          tokenizer: {
+            root: [
+              // Add token rules for comments
+              [/\/\/.*$/, "comment"],
+              [/#.*$/, "comment"],
+              // Add token rule for string literals
+              [/"([^"\\]|\\.)*$/, "string", "@string"],
+              // Add token rule for custom language keywords
+              [
+                /jabtak|rakho|agar|kaarkhana|wapis|bolo|intezar|barabarha|chota|se|ke|ha|ko|karo|bhejo|jama|tafreeq|taqseem|zarb|barabar/,
+                "keyword",
+              ],
+              // Add token rule for JavaScript syntax (based on the JavaScript tokenizer)
+              [/[{}()\[\]]/, "delimiter.bracket"],
+              [
+                /[\w]+/,
+                {
+                  cases: {
+                    "@keywords": "keyword",
+                    "@default": "identifier",
+                  },
+                },
+              ],
+              [/[;,.]/, "delimiter"],
+              [/"/, "string", "@string"],
+              [/'/, "string", "@string2"],
+              [/\/\*/, "comment", "@comment"],
+              [/\/\/.*$/, "comment"],
+            ],
+            string: [
+              [/[^\\"]+/, "string"],
+              [/"/, "string", "@pop"],
+            ],
+            string2: [
+              [/[^\\']+/, "string"],
+              [/'/, "string", "@pop"],
+            ],
+            comment: [
+              [/[^\/*]+/, "comment"],
+              [/\/\*/, "comment", "@push"],
+              [/\*\//, "comment", "@pop"],
+              [/[\/*]/, "comment"],
+            ],
+          },
+          // Define defaultToken. Used when no rules match.
+          defaultToken: "invalid",
+          // Define keywords for JavaScript syntax highlighting
+          keywords: [
+            "await",
+            "break",
+            "case",
+            "catch",
+            "class",
+            "const",
+            "continue",
+            "debugger",
+            "default",
+            "delete",
+            "do",
+            "else",
+            "export",
+            "extends",
+            "finally",
+            "for",
+            "function",
+            "if",
+            "import",
+            "in",
+            "instanceof",
+            "new",
+            "return",
+            "super",
+            "switch",
+            "this",
+            "throw",
+            "try",
+            "typeof",
+            "var",
+            "void",
+            "while",
+            "with",
+            "yield",
+          ],
+        });
+
+        monaco.languages.registerCompletionItemProvider("customAndJSLanguage", {
+          provideCompletionItems: function (model, position) {
+            const word = model.getWordUntilPosition(position);
+            return {
+              suggestions: createSuggestions(translations),
+            };
+          },
+        });
+
+        monaco.editor.defineTheme("my-theme", {
+  "base": "vs-dark",
+  "inherit": true,
+  "rules": [
+    {
+      "background": "2E3440",
+      "token": ""
+    },
+    {
+      "foreground": "616e88",
+      "token": "comment"
+    },
+    {
+      "foreground": "a3be8c",
+      "token": "string"
+    },
+    {
+      "foreground": "b48ead",
+      "token": "constant.numeric"
+    },
+    {
+      "foreground": "81a1c1",
+      "token": "constant.language"
+    },
+    {
+      "foreground": "81a1c1",
+      "token": "keyword"
+    },
+    {
+      "foreground": "81a1c1",
+      "token": "storage"
+    },
+    {
+      "foreground": "81a1c1",
+      "token": "storage.type"
+    },
+    {
+      "foreground": "8fbcbb",
+      "token": "entity.name.class"
+    },
+    {
+      "foreground": "8fbcbb",
+      "fontStyle": "  bold",
+      "token": "entity.other.inherited-class"
+    },
+    {
+      "foreground": "88c0d0",
+      "token": "entity.name.function"
+    },
+    {
+      "foreground": "81a1c1",
+      "token": "entity.name.tag"
+    },
+    {
+      "foreground": "8fbcbb",
+      "token": "entity.other.attribute-name"
+    },
+    {
+      "foreground": "88c0d0",
+      "token": "support.function"
+    },
+    {
+      "foreground": "f8f8f0",
+      "background": "f92672",
+      "token": "invalid"
+    },
+    {
+      "foreground": "f8f8f0",
+      "background": "ae81ff",
+      "token": "invalid.deprecated"
+    },
+    {
+      "foreground": "b48ead",
+      "token": "constant.color.other.rgb-value"
+    },
+    {
+      "foreground": "ebcb8b",
+      "token": "constant.character.escape"
+    },
+    {
+      "foreground": "8fbcbb",
+      "token": "variable.other.constant"
+    }
+  ],
+  "colors": {
+    "editor.foreground": "#D8DEE9",
+    "editor.background": "#2E3440",
+    "editor.selectionBackground": "#434C5ECC",
+    "editor.lineHighlightBackground": "#3B4252",
+    "editorCursor.foreground": "#D8DEE9",
+    "editorWhitespace.foreground": "#434C5ECC"
+  }
+});
+        const editor = monaco.editor.create(document.getElementById("editor"), {
+          value: `rakho a barabar 10 ke;
+
+jabtak (a chota ha 20 se){
+bolo ("a chota ha ");
+a ko barabar karo a jama 1 ke;
+}`,
+          language: "customAndJSLanguage", // Use the combined language
+          theme: "my-theme",
+        });
+
+        // Add event listener to the button to retrieve data from the editor and alert it
+
+        function handleEditorInputChange() {
+          console.log("sednign");
+          const data = editor.getValue();
+          window.parent.postMessage({ type: "dataUpdate", payload: data }, "*");
+        }
+        handleEditorInputChange();
+        editor.onDidChangeModelContent(handleEditorInputChange);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+/* IframeComponent.css */
+*,
+body,
+html {
+  box-sizing: border-box;
+}
+/* Apply styles to the wrapper div */
+.iframe-wrapper {
+  width: 100%;
+  overflow: hidden; /* Hide overflowing content outside the wrapper */
+}
+
+/* Style the iframe */
+iframe {
+  width: 100%;
+  height: 400px; /* Set a fixed height or adjust as needed */
+  border: none; /* Remove the default iframe border */
+}
+
+/* Style the scroll bar (optional) */
+.iframe-wrapper ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.iframe-wrapper ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.iframe-wrapper ::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.iframe-wrapper ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

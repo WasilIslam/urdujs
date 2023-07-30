@@ -1,0 +1,15 @@
+// sabsebaranumber find in array
+
+rakho array barabar [11891,2,3,4,5,6,8,9,10] ke; 
+rakho sabsebaranumber barabar array[0] ke;
+agar (array ki lambai barabar ha 0 ke)
+    karo sabsebaranumber barabar null ke;
+warna {
+    rakho i barabar 1 ke;
+    jabtak (i chota ha array ki lambai se){
+        agar (sabsebaranumber chota ha array[i] se)
+            sabsebaranumber ko barabar karo array[i] ke;
+        i ko barabar karo i jama 1 ke;
+    }
+}
+bolo(sabsebaranumber)
