@@ -29,40 +29,40 @@
     <script>
       const translations = {
         jabtak: "while",
-  rakho: "let",
-  agar: "if",
-  warna: "else",
-  kaarkhana: "function",
-  wapis: "return",
-  bolo: "console.log",
-  intezar: "await",
-  barabarha: "==",
-  chota: "<",
-  bara: ">",
-  se: "",
-  ke: "",
-  ha: "",
-  ko: "",
-  karo: "",
-  bhejo: "",
-  jama: "+",
-  tafreeq: "-",
-  taqseem: "/",
-  zarb: "*",
-  barabar: "=",
-  or: "&&",
-  ya: "||",
-  manfi: "true",
-  musbat: "false",
-  daba: "[]",
-  dabey: "[]",
-  dalo: "push",
-  nikalo: "pop",
-  lambai: "length",
-  ma: ".",
-  ki: ".",
-  cheez: "{}",
-  pucho: "prompt",
+        rakho: "let",
+        agar: "if",
+        warna: "else",
+        kaarkhana: "function",
+        wapis: "return",
+        bolo: "console.log",
+        intezar: "await",
+        barabarha: "==",
+        chota: "<",
+        bara: ">",
+        se: "",
+        ke: "",
+        ha: "",
+        ko: "",
+        karo: "",
+        bhejo: "",
+        jama: "+",
+        tafreeq: "-",
+        taqseem: "/",
+        zarb: "*",
+        barabar: "=",
+        or: "&&",
+        ya: "||",
+        manfi: "true",
+        musbat: "false",
+        daba: "[]",
+        dabey: "[]",
+        dalo: "push",
+        nikalo: "pop",
+        lambai: "length",
+        ma: ".",
+        ki: ".",
+        cheez: "{}",
+        pucho: "prompt",
       };
 
       function createSuggestions(translations) {
@@ -91,7 +91,7 @@
               [/"([^"\\]|\\.)*$/, "string", "@string"],
               // Add token rule for custom language keywords
               [
-                /jabtak|rakho|agar|kaarkhana|wapis|bolo|intezar|barabarha|chota|se|ke|ha|ko|karo|bhejo|jama|tafreeq|taqseem|zarb|barabar/,
+                /jabtak|rakho|agar|kaarkhana|wapis|bolo|intezar|barabarha|chota|barabar|se|ke|ha|ko|karo|bhejo|jama|tafreeq|taqseem|zarb|bara|or|ya|manfi|musbat|daba|dabey|dalo|nikalo|lambai|ma|ki|cheez|pucho/g,
                 "keyword",
               ],
               // Add token rule for JavaScript syntax (based on the JavaScript tokenizer)
@@ -272,12 +272,11 @@
         function decodeCodeParam() {
           const searchParams = new URLSearchParams(window.location.search);
           const codeValue = searchParams.get("code");
-          console.info("Code Value: ",codeValue)
+          console.info("Code Value: ", codeValue);
           return codeValue ? decodeURIComponent(codeValue) : null;
         }
         const editor = monaco.editor.create(document.getElementById("editor"), {
-          value:
-            decodeCodeParam(),
+          value: decodeCodeParam(),
           language: "customAndJSLanguage", // Use the combined language
           theme: "my-theme",
         });

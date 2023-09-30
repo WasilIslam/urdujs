@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Maven+Pro:wght@400;500&family=Noto+Nastaliq+Urdu&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Walter+Turncoat");
 body {
   background-color: floralwhite;
   font-family: "Noto Nastaliq Urdu", serif;
@@ -8,13 +9,14 @@ body {
 .button-1 {
   background-color: #04aa6d;
   color: white;
-  padding: 4px 20px;
+  padding: 14px 20px;
   border: none;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  font-family: Walter Turncoat;
 }
 
 /* Optional hover effect */

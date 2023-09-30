@@ -7,6 +7,7 @@
   
   .button-1 {
     flex: 1;
+    
     max-width: calc(20% - 10px); /* 20% width for at most 5 buttons in a row with a 10px gap */
   }
   
@@ -15,5 +16,10 @@
     .button-1 {
       max-width: 100%; /* Full width for buttons on smaller screens */
     }
+  }
+
+  .button-chalk{
+    background-color: black;
+
   }
   

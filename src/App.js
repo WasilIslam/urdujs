@@ -13,6 +13,7 @@ const App = () => {
     // Access data from the iframe here and do whatever you want with it
     setInitialCode(code || dataFromIframe);
     setCode(Back2JS(code || dataFromIframe));
+    console.log(Back2JS(dataFromIframe));
   };
   useEffect(() => {
     runCode(examples[0].code);
