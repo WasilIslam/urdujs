@@ -3,6 +3,7 @@ body {
   background-color: floralwhite;
   font-family: "Noto Nastaliq Urdu", serif;
   background-image: url("../public/old-husks.png");
+  cursor: url("../public/hamza.png");
 }
 .button-1 {
   background-color: #04aa6d;
@@ -43,4 +44,25 @@ body {
   .parent{
     flex-direction: column;
   }
+}
+
+
+
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the track */
+}
+
+/* Define the color and style of the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: rgb(11, 25, 25); /* Color of the thumb */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Change the color of the thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(90, 17, 17);
 }

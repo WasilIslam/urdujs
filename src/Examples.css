@@ -1,0 +1,19 @@
+.button-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px; /* Adjust the gap as needed */
+  }
+  
+  .button-1 {
+    flex: 1;
+    max-width: calc(20% - 10px); /* 20% width for at most 5 buttons in a row with a 10px gap */
+  }
+  
+  /* Media query for mobile responsiveness */
+  @media screen and (max-width: 768px) {
+    .button-1 {
+      max-width: 100%; /* Full width for buttons on smaller screens */
+    }
+  }
+  

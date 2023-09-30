@@ -1,12 +1,8 @@
 import React, { useEffect } from "react";
 import "./IframeComponent.css"; // Import the CSS file for IframeComponent
 
-const CodeRunner = ({code}) => {
+const CodeRunner = ({ code }) => {
   const externalHtmlUrl = `./run.html?code=${encodeURIComponent(code)}`;
-
-  useEffect(() => {
-    
-  }, []);
 
   return (
     <div className="iframe-wrapper">

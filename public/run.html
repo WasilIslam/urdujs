@@ -28,8 +28,28 @@
         content: "> ";
       }
 
-      #consoleOutput .error{
+      #consoleOutput .error {
         color: red;
+      }
+      /*Scrollbar styles*/
+
+      ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Background color of the track */
+      }
+
+      /* Define the color and style of the scrollbar thumb */
+      ::-webkit-scrollbar-thumb {
+        background: brown; /* Color of the thumb */
+        border-radius: 5px; /* Rounded corners */
+      }
+
+      /* Change the color of the thumb on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(90, 17, 17);
       }
     </style>
   </head>
@@ -45,10 +65,10 @@
         const outputDiv = document.getElementById("consoleOutput");
         const newLogEntry = document.createElement("p");
         newLogEntry.innerText = JSON.stringify(args);
-        outputDiv.appendChild( newLogEntry);
+        outputDiv.appendChild(newLogEntry);
       };
       console.error = (...args) => {
-        originalConsoleLog(...args)
+        originalConsoleLog(...args);
         const outputDiv = document.getElementById("consoleOutput");
         const newLogEntry = document.createElement("p");
         newLogEntry.className = "error";
@@ -60,7 +80,7 @@
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const data = urlParams.get("code");
-        console.log(data)
+        // console.log(data);
         eval(data);
       } catch (error) {
         console.error("Error occurred:", error);

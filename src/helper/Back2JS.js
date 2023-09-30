@@ -26,13 +26,15 @@ const translations = {
   ya: "||",
   manfi: "true",
   musbat: "false",
-  saf: "[]",
+  daba: "[]",
+  dabey: "[]",
   dalo: "push",
   nikalo: "pop",
-  lambai:"length",
+  lambai: "length",
   ma: ".",
-  ki:".",
+  ki: ".",
   cheez: "{}",
+  pucho: "prompt",
 };
 
 function Back2JS(code) {
@@ -50,7 +52,9 @@ function Back2JS(code) {
   });
   //   console.log(tokens);
 
-  return tokens.map((token) => token.value).join(" ");
+  const tokensMapped = tokens.map((token) => token.value).join(" ");
+  console.log("Tokens mapped", code);
+  return tokensMapped;
 }
 
 export default Back2JS;

@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import "./IframeComponent.css"; // Import the CSS file for IframeComponent
 
-const IframeComponent = ({onDataUpdate}) => {
-  const externalHtmlUrl = "./e.html"; // The URL of the external HTML file
+const IframeComponent = ({ onDataUpdate, initialCode }) => {
+  console.log("Code value", initialCode);
+  const externalHtmlUrl =
+    "./e.html" +
+    (initialCode ? "?code=" + encodeURIComponent(initialCode) : ""); // The URL of the external HTML file
 
   useEffect(() => {
     const handleMessage = (event) => {
@@ -10,7 +13,6 @@ const IframeComponent = ({onDataUpdate}) => {
         onDataUpdate(event.data.payload);
       }
     };
-
     window.addEventListener("message", handleMessage);
 
     return () => {
