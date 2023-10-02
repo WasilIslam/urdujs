@@ -5,6 +5,17 @@ import CodeRunner from "./Runner";
 import Back2JS from "./helper/Back2JS";
 import Examples, { examples } from "./Examples";
 
+const Links = () => {
+  return (
+    <a
+      style={{ color: "black", fontSize: "14px" }}
+      href="https://www.linkedin.com/in/wasilislam"
+    >
+      👋واصل
+    </a>
+  );
+};
+
 const App = () => {
   const [dataFromIframe, setDataFromIframe] = useState("");
   const [code, setCode] = useState();
@@ -20,8 +31,15 @@ const App = () => {
   }, []);
   return (
     <div className="App">
-      <div style={{ display: "flex", padding: "0px 10px" }}>
+      <div
+        style={{
+          display: "flex",
+          padding: "0px 10px",
+          justifyContent: "space-between",
+        }}
+      >
         <h1> اردو .JS</h1>
+        <Links />
       </div>
 
       <div className="parent">

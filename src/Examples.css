@@ -7,7 +7,6 @@
   
   .button-1 {
     flex: 1;
-    
     max-width: calc(20% - 10px); /* 20% width for at most 5 buttons in a row with a 10px gap */
   }
   
@@ -19,7 +18,12 @@
   }
 
   .button-chalk{
-    background-color: black;
-
+    background-color:#32363edc;
+    border: 1px solid black;
+  }
+  .button-chalk:hover{
+    background-color: yellow;
+    color: black;
+    transition: 0.3s;
   }
   

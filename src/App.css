@@ -7,9 +7,9 @@ body {
   cursor: url("../public/hamza.png");
 }
 .button-1 {
-  background-color: #04aa6d;
+  background-color: #035a3a;
   color: white;
-  padding: 14px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 4px;
   font-size: 16px;

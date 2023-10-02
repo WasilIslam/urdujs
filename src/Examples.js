@@ -35,6 +35,18 @@ kaarkhana fibonashi(n) {
 bolo(fibonashi(10))`,
   },
   {
+    title: "Factorial",
+    code: `
+kaarkhana factorial(n) {
+  agar(n barabarha 0 ke ya n barabarha 1 ke) {
+    wapis bhejo 1 ko;
+  } 
+  warna wapis bhejo n zarb factorial(n tafreeq 1);
+}
+
+bolo(factorial(5)); // 120`,
+  },
+  {
     title: "Assalam-o-alaikum!",
     code: `
 rakho naam barabar (pucho("جناب، آپ کا نام کیا ہے؟")) ke;
@@ -42,7 +54,17 @@ rakho naam barabar (pucho("جناب، آپ کا نام کیا ہے؟")) ke;
 bolo("! "+naam+ " السلام علیکم");`,
   },
   {
-    title: "Print A",
+    title: "Even/ Odd",
+    code: `
+rakho a barabar 10 ke;
+    
+agar ((a & 1) barabar ha 0 ke){
+  bolo("a even ha");
+  }
+warna bolo("a odd ha")`,
+  },
+  {
+    title: "Loop",
     code: `
 rakho a barabar 10 ke;
 
@@ -50,16 +72,6 @@ jabtak (a bara ha 0 se){
   bolo("A ki value ha=",a);
   a ko barabar karo a tafreeq 1 ke;
 }`,
-  },
-  {
-    title: "Even Odd",
-    code: `
-rakho a barabar 10 ke;
-
-agar (a barabar ha 0 ke){
-  bolo("a even ha");
-}
-warna bolo("a odd ha")`,
   },
 ];
 
