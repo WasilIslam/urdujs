@@ -1,0 +1,12 @@
+.istandwithpalestine{
+    color: #fff;
+    background: linear-gradient(40deg,#21811f 25%,#0000 0),linear-gradient(140deg,#b71c1c 75%,#000 0);
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    font-family:'Walter Turncoat', 'Fira Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    justify-content: center;
+    display: flex;
+    text-decoration: none;
+    font-size: 23px;
+}
