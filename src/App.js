@@ -7,6 +7,18 @@ import Examples, { examples } from "./Examples";
 
 const Links = () => {
   return (
+    <div style={{ display: "flex", flexDirection: "row", gap: "2px" }}>
+      <img
+        src="https://flags.fmcdn.net/data/flags/w580/ps.png"
+        style={{ width: 40, height: 30 }}
+      />
+      <span style={{ color: "darkred" }}>I </span>
+      <span style={{ color: "" }}>stand </span>
+      <span style={{ color: "#009639" }}>with </span>
+      <span style={{ color: "#ED2E38" }}>palestine</span>
+    </div>
+  );
+  return (
     <>
       <a href="https://github.com/WasilIslam/urdujs" className="github-button">
         <svg
